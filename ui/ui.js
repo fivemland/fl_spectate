@@ -10,11 +10,15 @@ const App = Vue.createApp({
   },
   computed: {
     filteredPlayers() {
-      if (this.search === '') return this.players;
+      if (this.search === "") return this.players;
 
       return this.players.filter((player) => {
-        if (!isNaN(parseInt(this.search))) return player.id === parseInt(this.search);
-        else return player.name.toLowerCase().includes(this.search.toLowerCase());
+        return (
+          player.name.toLowerCase().includes(this.search.toLowerCase()) ||
+          player.serverId.toLowerCase().includes(this.search.toLowerCase()) ||
+          player.jobText.toLowerCase().includes(this.search.toLowerCase()) ||
+          player.group.toLowerCase().includes(this.search.toLowerCase())
+        );
       });
     },
   },
