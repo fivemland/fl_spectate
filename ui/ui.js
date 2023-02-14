@@ -83,3 +83,12 @@ window.addEventListener('message', ({ data }) => {
     playerInfoElement.innerHTML = data.playerInfo.join('<br>');
   }
 });
+
+function logKey(e) {
+  if (e.key == "Escape") {
+    fetch(`https://${GetParentResourceName()}/close`);
+  }
+}
+
+document.addEventListener("keydown", logKey);
+
